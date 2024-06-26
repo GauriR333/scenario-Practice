@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_374399_scenarios.getDataFromServer</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>getDataFromServer</name>
+        <script><![CDATA[var getDataFromServer = Class.create();
+getDataFromServer.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getUserdata: function () {
+	var uid = this.getParameter('sysparm_user_id');//parameterName in client script
+		var gr = new GlideRecord('sys_user');
+		gr.addQuery('sys_id', uid);
+		gr.query();
+		gr.next();
+		return gr.email;
+
+	},
+	type: 'getDataFromServer'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-06-26 08:43:15</sys_created_on>
+        <sys_id>e7c3b45d83030a10349455a6feaad37f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>getDataFromServer</sys_name>
+        <sys_package display_value="Scenarios_practice" source="x_374399_scenarios">80e3d1a383a24610349455a6feaad379</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Scenarios_practice">80e3d1a383a24610349455a6feaad379</sys_scope>
+        <sys_update_name>sys_script_include_e7c3b45d83030a10349455a6feaad37f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-06-26 08:43:15</sys_updated_on>
+    </sys_script_include>
+</record_update>

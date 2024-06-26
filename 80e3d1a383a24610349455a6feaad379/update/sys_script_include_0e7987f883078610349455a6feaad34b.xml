@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>false</active>
+        <api_name>x_374399_scenarios.getCallerDetails</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>getCallerDetails</name>
+        <script><![CDATA[var getCallerDetails = Class.create();
+getCallerDetails.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getuserInformation: function () {
+		gs.log('fechinformation::start');
+		var user = this.getParameter('sysparm_user');
+		gs.log('fechinformation:: user'+user);
+		var gr = new GlideRecord('sys_user');
+		gs.log('fechinformation:: gr');
+		gr.addQuery('sys_id', user);
+		gs.log('fechinformation:: query');
+		gr.query();
+		gs.log('fechinformation::');
+		gr.next();
+		gs.log('fechinformation::');
+
+		var jsonobj = {};
+
+		gs.log('fechinformation:: jsonobj');
+
+		jsonobj.email = gr.getValue('email');
+		gs.log('fechinformation:: '+ jsonobj.email);
+			jsonobj.phonenumber = gr.getValue('phonenumber');
+			gs.log('fechinformation::'+ jsonobj.phonenumber );
+			jsonobj.manager =gr.getValue('manager');
+			gs.log('fechinformation::'+jsonobj.manager);
+			jsonobj.manageremail =gr.getValue('manageremail');
+			gs.log('fechinformation::'+ jsonobj.manageremail);
+			return JSON.stringify(jsonobj);
+
+	},
+
+	type: 'getCallerDetails'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-06-25 06:43:20</sys_created_on>
+        <sys_id>0e7987f883078610349455a6feaad34b</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>getCallerDetails</sys_name>
+        <sys_package display_value="Scenarios_practice" source="x_374399_scenarios">80e3d1a383a24610349455a6feaad379</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Scenarios_practice">80e3d1a383a24610349455a6feaad379</sys_scope>
+        <sys_update_name>sys_script_include_0e7987f883078610349455a6feaad34b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-06-26 06:42:29</sys_updated_on>
+    </sys_script_include>
+</record_update>
